@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">YouPlay</string>
+    <string name="preference_file_key">com.palashbansal.musicalyoutube.queue_pref</string>
+</resources>
