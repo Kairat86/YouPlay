@@ -4,21 +4,14 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.webkit.JavascriptInterface;
-import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 public class YoutubePlayerView extends WebView {
 
-    public static final int BUFFERING = 3;
-    public static final int CUED = 5;
-    public static final int ENDED = 0;
-    public static final int PAUSED = 2;
-    public static final int PLAYING = 1;
     public static final int UNKNOWN = -2;
-    public static final int UNSTARTED = -1;
     public boolean isDragging = false;
-    private Runnable onPlayerReadyRunnable = null, onPlaybackStateChange = null;
+    private Runnable onPlayerReadyRunnable = null;
     private NumberReceivedListener durationListener, VideoLoadedFractionListener;
     private int playbackState = UNKNOWN;
     private NumberReceivedListener currentTimeListener;
@@ -40,7 +33,6 @@ public class YoutubePlayerView extends WebView {
                 "window.setInterval(getVideoLoadedFraction, 1000);\n" + "</script>\n" + "<div id=\"overlay\"></div>\n" + "  </body>\n" + "</html>";
 
         setTag("YTPlayer");
-        setWebChromeClient(new WebChromeClient());
         clearCache(true);
         clearHistory();
         //		if (Build.VERSION.SDK_INT >= 19) {
@@ -94,33 +86,6 @@ public class YoutubePlayerView extends WebView {
         if (VideoLoadedFractionListener != null) VideoLoadedFractionListener.onReceive(fraction);
     }
 
-
-    @JavascriptInterface
-    public void playerStateChange(int state) {
-        playbackState = state;
-        if (onPlaybackStateChange != null) post(onPlaybackStateChange);
-        switch (state) {
-            case BUFFERING:
-                log("BUFFERING");
-                break;
-            case CUED:
-                log("CUED");
-                break;
-            case ENDED:
-                log("ENDED");
-                break;
-            case PAUSED:
-                log("PAUSED");
-                break;
-            case PLAYING:
-                log("PLAYING");
-                break;
-            case UNSTARTED:
-                log("UNSTARTED");
-                break;
-        }
-    }
-
     public void getCurrentTime() {
         loadUrl("javascript:getCurrentTime()");
     }
@@ -169,10 +134,6 @@ public class YoutubePlayerView extends WebView {
 
     public void setOnPlayerReadyRunnable(Runnable onPlayerReadyRunnable) {
         this.onPlayerReadyRunnable = onPlayerReadyRunnable;
-    }
-
-    public void setOnPlaybackStateChange(Runnable onPlaybackStateChange) {
-        this.onPlaybackStateChange = onPlaybackStateChange;
     }
 
     public void setDurationListener(NumberReceivedListener durationListener) {

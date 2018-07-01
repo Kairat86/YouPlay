@@ -42,15 +42,10 @@ import zhet.youplay.receiver.OpenAppReceiver;
 
 import static android.content.Intent.ACTION_SCREEN_OFF;
 import static android.content.Intent.ACTION_USER_PRESENT;
-import static com.palashbansal.musicalyoutube.YoutubePlayerView.BUFFERING;
-import static com.palashbansal.musicalyoutube.YoutubePlayerView.CUED;
-import static com.palashbansal.musicalyoutube.YoutubePlayerView.ENDED;
+import static android.view.Gravity.BOTTOM;
+import static android.view.Gravity.CENTER;
 import static com.palashbansal.musicalyoutube.YoutubePlayerView.GONE;
-import static com.palashbansal.musicalyoutube.YoutubePlayerView.INVISIBLE;
 import static com.palashbansal.musicalyoutube.YoutubePlayerView.OnClickListener;
-import static com.palashbansal.musicalyoutube.YoutubePlayerView.PAUSED;
-import static com.palashbansal.musicalyoutube.YoutubePlayerView.PLAYING;
-import static com.palashbansal.musicalyoutube.YoutubePlayerView.UNSTARTED;
 import static com.palashbansal.musicalyoutube.YoutubePlayerView.VISIBLE;
 
 /**
@@ -84,10 +79,11 @@ public class YoutubePlayerService extends Service {
     private ImageView closeButton;
     private ImageView openAppBtn;
     private ProgressBar bufferingIndicator;
-    private boolean isPaused = true;
-    private ImageView replayButton;
     private OpenAppReceiver receiver;
     private BroadcastReceiver screenEventReciever;
+    private FrameLayout closeContainer;
+    private WindowManager.LayoutParams closeParams;
+    private boolean shouldClose;
 
     public static float dipToPixels(Context context, float dipValue) {
         DisplayMetrics metrics = context.getResources().getDisplayMetrics();
@@ -110,7 +106,6 @@ public class YoutubePlayerService extends Service {
     public void onCreate() {
         super.onCreate();
         isRunning = true;
-        Log.d("Service", "onCreate");
         windowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
 
         controller = PlaybackController.getInstance(this);
@@ -133,7 +128,6 @@ public class YoutubePlayerService extends Service {
         seekBar = view.findViewById(com.palashbansal.musicalyoutube.R.id.seekBar);
         closeButton = view.findViewById(com.palashbansal.musicalyoutube.R.id.close_button);
         openAppBtn = view.findViewById(com.palashbansal.musicalyoutube.R.id.to_app);
-        replayButton = view.findViewById(com.palashbansal.musicalyoutube.R.id.replay_button);
         bufferingIndicator = view.findViewById(com.palashbansal.musicalyoutube.R.id.buffer_loading_indicator);
 
         playerView.initialize();
@@ -172,11 +166,7 @@ public class YoutubePlayerService extends Service {
             type = WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY;
         }
         params = new WindowManager.LayoutParams((int) (Resources.getSystem().getDisplayMetrics().widthPixels / 2.05), ViewGroup.LayoutParams.WRAP_CONTENT, type, WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE, PixelFormat.TRANSLUCENT);
-        params.gravity = Gravity.END | Gravity.BOTTOM;
-        //        Point outSize = new Point();
-        //        windowManager.getDefaultDisplay().getSize(outSize);
-        //        params.x = outSize.x - playerView.getWidth();
-        //        params.y = outSize.y - playerView.getHeight();
+        params.gravity = Gravity.END | CENTER;
 
         setDragListeners();
 
@@ -215,7 +205,12 @@ public class YoutubePlayerService extends Service {
         secondsHandler.postDelayed(r, 200);
         windowManager.addView(container, params);
         container.setVisibility(View.GONE);
-
+        closeContainer = new FrameLayout(this);
+        inflater.inflate(R.layout.close_bar, closeContainer);
+        closeParams = new WindowManager.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, type, WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE, PixelFormat.TRANSLUCENT);
+        closeParams.gravity = BOTTOM;
+        windowManager.addView(closeContainer, closeParams);
+        closeContainer.setVisibility(GONE);
         setupPlayerView();
 
         setButtonListeners();
@@ -225,7 +220,6 @@ public class YoutubePlayerService extends Service {
         IntentFilter filter = new IntentFilter(ACTION_USER_PRESENT);
         filter.addAction(ACTION_SCREEN_OFF);
         registerReceiver(screenEventReciever, filter);
-        Log.d("Player", "Created");
     }
 
     private NotificationCompat.Builder getBuilder() {
@@ -279,13 +273,6 @@ public class YoutubePlayerService extends Service {
                 playerView.seekTo(currentSeconds, true);
             }
         });
-        replayButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                playerView.seekTo(0, true);
-                playerView.play();
-            }
-        });
         closeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -313,42 +300,8 @@ public class YoutubePlayerService extends Service {
             public void run() {
                 controller.callVideoChanged();
                 playerView.pause();
-                isPaused = true;
                 bufferingIndicator.setVisibility(GONE);
-                replayButton.setVisibility(VISIBLE);
                 isPlayerReady = true;
-            }
-        });
-
-        playerView.setOnPlaybackStateChange(new Runnable() {
-            @Override
-            public synchronized void run() {
-                switch (playerView.getPlaybackState()) {
-                    case BUFFERING:
-                        if (!isPaused) bufferingIndicator.setVisibility(VISIBLE);
-                        break;
-                    case CUED:
-                        bufferingIndicator.setVisibility(VISIBLE);
-                        break;
-                    case ENDED:
-                        bufferingIndicator.setVisibility(GONE);
-                        replayButton.setVisibility(VISIBLE);
-                        controller.notifyVideoEnd();
-                        break;
-                    case PAUSED:
-                        bufferingIndicator.setVisibility(GONE);
-                        replayButton.setVisibility(INVISIBLE);
-                        isPaused = true;
-                        break;
-                    case PLAYING:
-                        bufferingIndicator.setVisibility(GONE);
-                        replayButton.setVisibility(INVISIBLE);
-                        isPaused = false;
-                        break;
-                    case UNSTARTED:
-                        break;
-                }
-
             }
         });
     }
@@ -445,14 +398,6 @@ public class YoutubePlayerService extends Service {
      */
     private void setDragListeners() {
 
-        playerView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                playerView.showOverlay();
-                return true;
-            }
-        });
-
         playerView.setOnTouchListener(new View.OnTouchListener() {
             private int initialX;
             private int initialY;
@@ -463,21 +408,38 @@ public class YoutubePlayerService extends Service {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
+                        playerView.showOverlay();
                         initialX = -params.x;
-                        initialY = -params.y;
+                        initialY = params.y;
                         initialTouchX = event.getRawX();
                         initialTouchY = event.getRawY();
+                        closeContainer.setVisibility(VISIBLE);
                         return false;
                     case MotionEvent.ACTION_UP:
                         playerView.hideOverlay();
+                        closeContainer.setVisibility(GONE);
+                        if (shouldClose) stopSelf();
                         return false;
                     case MotionEvent.ACTION_MOVE:
                         if (!playerView.isDragging) {
                             return false;
                         }
                         params.x = -(initialX + (int) (event.getRawX() - initialTouchX));
-                        params.y = -(initialY + (int) (event.getRawY() - initialTouchY));
+                        params.y = initialY + (int) (event.getRawY() - initialTouchY);
                         windowManager.updateViewLayout(container, params);
+                        int[] containerLocs = new int[2];
+                        container.getLocationOnScreen(containerLocs);
+                        int[] closeContainerLocs = new int[2];
+                        closeContainer.getLocationOnScreen(closeContainerLocs);
+                        if (closeContainerLocs[1] < containerLocs[1] + container.getHeight()) {
+                            Log.i(TAG, "top>bottom");
+                            closeContainer.setBackgroundColor(getResources().getColor(R.color.intersect_color));
+                            shouldClose = true;
+                        } else {
+                            closeContainer.setBackgroundColor(getResources().getColor(R.color.close_bar_color));
+                            shouldClose = false;
+                        }
+                        windowManager.updateViewLayout(closeContainer, closeParams);
                         return true;
                 }
                 return false;
