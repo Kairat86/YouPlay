@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="popular">"Sikat na "</string>
+    <string name="network_not_available">"Walang koneksyon sa internet "</string>
+    <string name="refresh">Refresh</string>
+    <string name="network_error">"Error sa network "</string>
+    <string name="popular_music">"Sikat na musika "</string>
+    <string name="starting">"Nagsisimula ang manlalaro, mangyaring maghintay "</string>
+</resources>

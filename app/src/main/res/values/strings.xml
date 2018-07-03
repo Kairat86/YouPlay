@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">YouPlay</string>
     <string name="popular">Popular</string>
-    <string name="you_cant_play_without_permission">You can\'t play music without this permission</string>
     <string name="network_not_available">No internet connection</string>
     <string name="refresh">Refresh</string>
     <string name="network_error">Network error</string>
+    <string name="popular_music">Popular music</string>
+    <string name="starting">Starting player, please wait</string>
 </resources>

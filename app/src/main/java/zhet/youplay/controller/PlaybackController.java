@@ -9,6 +9,7 @@ import com.palashbansal.musicalyoutube.VideoItem;
 
 import java.util.ArrayList;
 
+import zhet.youplay.R;
 import zhet.youplay.adapter.PlaybackQueueAdapter;
 import zhet.youplay.entity.Playlist;
 import zhet.youplay.service.YoutubePlayerService;
@@ -55,7 +56,7 @@ public class PlaybackController {
         }
         if (context != null) {
             if (!YoutubePlayerService.checkServiceAndStart(context)) {
-                Toast.makeText(context, "Starting player, please wait.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, R.string.starting, Toast.LENGTH_SHORT).show();
             }
             controller.context = context;
         }

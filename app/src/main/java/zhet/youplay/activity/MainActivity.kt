@@ -50,8 +50,7 @@ class MainActivity : AppCompatActivity() {
     private fun init() {
         setTitle(R.string.popular)
         setContentView(R.layout.activity_main)
-        search("popular music ${Calendar.getInstance().get(Calendar.YEAR)}", "playlist", 6, null)
-        Log.i(TAG, "action bar is ull=>${supportActionBar == null}")
+        search(getString(R.string.popular_music) + " ${Calendar.getInstance().get(Calendar.YEAR)}", "playlist", 6, null)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !Settings.canDrawOverlays(this)) {
             val intent = Intent("android.settings.action.MANAGE_OVERLAY_PERMISSION", Uri.parse("package:$packageName"))
