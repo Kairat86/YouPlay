@@ -17,6 +17,7 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.SearchView
+import com.google.ads.mediation.admob.AdMobAdapter
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
@@ -58,7 +59,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         MobileAds.initialize(this, getString(R.string.app_id))
-        adView.loadAd(AdRequest.Builder().build())
+        val extras = Bundle()
+        extras.putString("max_ad_content_rating", "G")
+        val request = AdRequest.Builder()
+                .addNetworkExtrasBundle(AdMobAdapter::class.java, extras)
+                .build()
+        adView.loadAd(request)
         adView.adListener = object : AdListener() {
             override fun onAdLoaded() {
                 adView.visibility = VISIBLE
