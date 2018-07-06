@@ -19,8 +19,8 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.SearchView
-import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.InterstitialAd
 import com.google.android.gms.ads.MobileAds
 import kotlinx.android.synthetic.main.activity_main.*
 import zhet.util.C.ACTION_AD_STATE
@@ -44,6 +44,7 @@ class MainActivity : AppCompatActivity() {
 
     private val stack = Stack<RecyclerView.Adapter<out RecyclerView.ViewHolder>>()
     private lateinit var receiver: AdStateReceiver
+    private var ad: InterstitialAd? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,13 +57,6 @@ class MainActivity : AppCompatActivity() {
         receiver = AdStateReceiver()
         registerReceiver(receiver, IntentFilter(ACTION_AD_STATE))
     }
-
-//    override fun onNewIntent(intent: Intent?) {
-//        super.onNewIntent(intent)
-//        Log.i(TAG,"onNewIntent")
-//        receiver = AdStateReceiver()
-//        registerReceiver(receiver, IntentFilter(ACTION_AD_STATE))
-//    }
 
     override fun onDestroy() {
         super.onDestroy()
@@ -81,15 +75,14 @@ class MainActivity : AppCompatActivity() {
         }
 
         MobileAds.initialize(this, getString(R.string.app_id))
-        val request = AdRequest.Builder().build()
-        adView.loadAd(request)
-        adView.adListener = object : AdListener() {
-            override fun onAdLoaded() {
-                if (getSharedPreferences(packageName + getString(R.string.app_name), Context.MODE_PRIVATE).getBoolean(IS_AD_VISIBLE, true)) {
-                    adView.visibility = VISIBLE
-                }
-            }
-        }
+        ad = InterstitialAd(this)
+        ad?.adUnitId = getString(R.string.int_id)
+        ad?.loadAd(AdRequest.Builder().build())
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        ad?.show()
     }
 
     private fun search(query: String, type: String, maxResults: Long, category: String?) {
