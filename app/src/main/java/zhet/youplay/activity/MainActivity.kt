@@ -59,11 +59,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         MobileAds.initialize(this, getString(R.string.app_id))
-        val extras = Bundle()
-        extras.putString("max_ad_content_rating", "G")
-        val request = AdRequest.Builder()
-                .addNetworkExtrasBundle(AdMobAdapter::class.java, extras)
-                .build()
+        val request = AdRequest.Builder().build()
         adView.loadAd(request)
         adView.adListener = object : AdListener() {
             override fun onAdLoaded() {
