@@ -47,6 +47,9 @@ import static android.view.Gravity.CENTER;
 import static com.palashbansal.musicalyoutube.YoutubePlayerView.GONE;
 import static com.palashbansal.musicalyoutube.YoutubePlayerView.OnClickListener;
 import static com.palashbansal.musicalyoutube.YoutubePlayerView.VISIBLE;
+import static zhet.util.C.ACTION_AD_STATE;
+import static zhet.util.C.HIDE;
+import static zhet.util.C.STATE;
 
 /**
  * Created by Palash on 23-Nov-16.
@@ -61,6 +64,7 @@ public class YoutubePlayerService extends Service {
     private static final int CONTROL_HIDE_TIMEOUT = 4000;
     public static final String BROADCAST_OPEN_ACTIVITY_FROM_POPUP = "BROADCAST_OPEN_ACTIVITY_FROM_POPUP";
     private static final String TAG = YoutubePlayerService.class.getSimpleName();
+    public static final int SHOW = 1;
     public static boolean isRunning = false, isPlayerReady = false;
     private VideoItem currentVideo;
     private boolean isControlsVisible = false;
@@ -220,6 +224,9 @@ public class YoutubePlayerService extends Service {
         IntentFilter filter = new IntentFilter(ACTION_USER_PRESENT);
         filter.addAction(ACTION_SCREEN_OFF);
         registerReceiver(screenEventReciever, filter);
+        Intent intent = new Intent(ACTION_AD_STATE);
+        intent.putExtra(STATE, HIDE);
+        sendBroadcast(intent);
     }
 
     private NotificationCompat.Builder getBuilder() {
@@ -371,7 +378,9 @@ public class YoutubePlayerService extends Service {
         isPlayerReady = false;
         unregisterReceiver(receiver);
         unregisterReceiver(screenEventReciever);
-        Log.d("Player", "Destroyed");
+        Intent intent = new Intent(ACTION_AD_STATE);
+        intent.putExtra(STATE, SHOW);
+        sendBroadcast(intent);
     }
 
     @Nullable

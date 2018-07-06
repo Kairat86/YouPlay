@@ -1,7 +1,9 @@
 package zhet.youplay.activity
 
+import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.net.ConnectivityManager
 import android.net.Uri
 import android.os.Build
@@ -17,15 +19,18 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.SearchView
-import com.google.ads.mediation.admob.AdMobAdapter
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
 import kotlinx.android.synthetic.main.activity_main.*
+import zhet.util.C.ACTION_AD_STATE
+import zhet.util.C.HIDE
+import zhet.util.C.STATE
 import zhet.youplay.BuildConfig
 import zhet.youplay.R
 import zhet.youplay.adapter.PlayListAdapter
 import zhet.youplay.adapter.SearchResultAdapter
+import zhet.youplay.service.YoutubePlayerService.SHOW
 import zhet.youplay.singleton.YouPlay
 import java.util.*
 
@@ -33,10 +38,12 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
 
     companion object {
-        val TAG: String = MainActivity::class.java.simpleName
+        private val TAG: String = MainActivity::class.java.simpleName
+        private const val IS_AD_VISIBLE = "is_ad_visible"
     }
 
     private val stack = Stack<RecyclerView.Adapter<out RecyclerView.ViewHolder>>()
+    private lateinit var receiver: AdStateReceiver
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +53,21 @@ class MainActivity : AppCompatActivity() {
             return
         }
         init()
+        receiver = AdStateReceiver()
+        registerReceiver(receiver, IntentFilter(ACTION_AD_STATE))
+    }
+
+//    override fun onNewIntent(intent: Intent?) {
+//        super.onNewIntent(intent)
+//        Log.i(TAG,"onNewIntent")
+//        receiver = AdStateReceiver()
+//        registerReceiver(receiver, IntentFilter(ACTION_AD_STATE))
+//    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        unregisterReceiver(receiver)
+        getSharedPreferences(packageName + getString(R.string.app_name), Context.MODE_PRIVATE).edit().putBoolean(IS_AD_VISIBLE, adView.visibility == VISIBLE).apply()
     }
 
     private fun init() {
@@ -63,7 +85,9 @@ class MainActivity : AppCompatActivity() {
         adView.loadAd(request)
         adView.adListener = object : AdListener() {
             override fun onAdLoaded() {
-                adView.visibility = VISIBLE
+                if (getSharedPreferences(packageName + getString(R.string.app_name), Context.MODE_PRIVATE).getBoolean(IS_AD_VISIBLE, true)) {
+                    adView.visibility = VISIBLE
+                }
             }
         }
     }
@@ -159,5 +183,18 @@ class MainActivity : AppCompatActivity() {
             }
         }
         return true
+    }
+
+    inner class AdStateReceiver : BroadcastReceiver() {
+        override fun onReceive(context: Context?, intent: Intent?) {
+            when (intent?.getIntExtra(STATE, 0)) {
+                HIDE -> {
+                    adView.visibility = GONE
+                }
+                SHOW -> {
+                    adView.visibility = VISIBLE
+                }
+            }
+        }
     }
 }
