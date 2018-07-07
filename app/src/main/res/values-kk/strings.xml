@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="popular">Танымал</string>
+    <string name="network_not_available">Интернет жоқ</string>
+    <string name="refresh">Жаңарту</string>
+    <string name="network_error">Желі қатесі</string>
+    <string name="popular_music">Танымал ән</string>
+    <string name="starting">Плеер жүктеліп жатыр, күте тұрыңыз</string>
+</resources>
