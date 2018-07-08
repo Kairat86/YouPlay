@@ -378,9 +378,6 @@ public class YoutubePlayerService extends Service {
         isPlayerReady = false;
         unregisterReceiver(receiver);
         unregisterReceiver(screenEventReciever);
-        Intent intent = new Intent(ACTION_AD_STATE);
-        intent.putExtra(STATE, SHOW);
-        sendBroadcast(intent);
     }
 
     @Nullable
