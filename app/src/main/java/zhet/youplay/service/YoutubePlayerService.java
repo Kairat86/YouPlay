@@ -388,14 +388,9 @@ public class YoutubePlayerService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.d("Player", "startCommand");
-
         if (intent == null) return super.onStartCommand(null, flags, startId);
-
         VideoItem video = (VideoItem) intent.getSerializableExtra("Video");
         if (video != null) controller.playNow(video);
-
-
         return START_STICKY;
     }
 

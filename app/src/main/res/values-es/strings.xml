@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="popular">Popular</string>
+    <string name="network_not_available">Sin conexión a Internet</string>
+    <string name="refresh">Refrescar</string>
+    <string name="network_error">Error de red </string>
+    <string name="popular_music">Música Popular</string>
+    <string name="starting">Jugador inicial, por favor espere</string>
+</resources>
