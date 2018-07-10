@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="popular">جمع</string>
+    <string name="network_not_available">"لا يوجد اتصال بالإنترنت "</string>
+    <string name="refresh">تحديث</string>
+    <string name="network_error">"خطأ في الشبكة "</string>
+    <string name="popular_music">"الموسيقى الشعبية "</string>
+    <string name="starting">"لاعب انطلاق ، يرجى الانتظار "</string>
+</resources>
