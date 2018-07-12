@@ -1,9 +1,7 @@
 package zhet.youplay.activity
 
-import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.content.IntentFilter
 import android.net.ConnectivityManager
 import android.net.Uri
 import android.os.Build
@@ -23,14 +21,10 @@ import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.InterstitialAd
 import com.google.android.gms.ads.MobileAds
 import kotlinx.android.synthetic.main.activity_main.*
-import zhet.util.C.ACTION_AD_STATE
-import zhet.util.C.HIDE
-import zhet.util.C.STATE
 import zhet.youplay.BuildConfig
 import zhet.youplay.R
 import zhet.youplay.adapter.PlayListAdapter
 import zhet.youplay.adapter.SearchResultAdapter
-import zhet.youplay.service.YoutubePlayerService.SHOW
 import zhet.youplay.singleton.YouPlay
 import java.util.*
 
@@ -43,7 +37,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private val stack = Stack<RecyclerView.Adapter<out RecyclerView.ViewHolder>>()
-    private lateinit var receiver: AdStateReceiver
     private var ad: InterstitialAd? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,15 +47,8 @@ class MainActivity : AppCompatActivity() {
             return
         }
         init()
-        receiver = AdStateReceiver()
-        registerReceiver(receiver, IntentFilter(ACTION_AD_STATE))
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        unregisterReceiver(receiver)
-        getSharedPreferences(packageName + getString(R.string.app_name), Context.MODE_PRIVATE).edit().putBoolean(IS_AD_VISIBLE, adView.visibility == VISIBLE).apply()
-    }
 
     private fun init() {
         setTitle(R.string.popular)
@@ -176,18 +162,5 @@ class MainActivity : AppCompatActivity() {
             }
         }
         return true
-    }
-
-    inner class AdStateReceiver : BroadcastReceiver() {
-        override fun onReceive(context: Context?, intent: Intent?) {
-            when (intent?.getIntExtra(STATE, 0)) {
-                HIDE -> {
-                    adView.visibility = GONE
-                }
-                SHOW -> {
-                    adView.visibility = VISIBLE
-                }
-            }
-        }
     }
 }

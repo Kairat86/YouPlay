@@ -22,8 +22,8 @@ android {
         applicationId "zhet.youplay"
         minSdkVersion 21
         targetSdkVersion 27
-        versionCode 12
-        versionName "2.10"
+        versionCode 13
+        versionName "2.11"
         multiDexEnabled true
         buildConfigField "String", "KEY", localProperties["key"]
     }

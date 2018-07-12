@@ -9,11 +9,9 @@ import android.webkit.WebView;
 
 public class YoutubePlayerView extends WebView {
 
-    public static final int UNKNOWN = -2;
     public boolean isDragging = false;
     private Runnable onPlayerReadyRunnable = null;
     private NumberReceivedListener durationListener, VideoLoadedFractionListener;
-    private int playbackState = UNKNOWN;
     private NumberReceivedListener currentTimeListener;
 
     public YoutubePlayerView(Context context) {
@@ -29,25 +27,18 @@ public class YoutubePlayerView extends WebView {
     }
 
     public void initialize() {
-        String data = "<!DOCTYPE html>\n" + "<html>\n" + "  <head>\n" + "    <style type=\"text/css\">\n" + "      html {\n" + "        height: 100%;\n" + "      }\n" + "      body {\n" + "        min-height: 100%;\n" + "        margin: 0;\n" + "      }\n" + "      iframe {\n" + "        position: absolute;\n" + "        border: none;\n" + "        height: 100%;\n" + "        width: 100%;\n" + "        top: 0;\n" + "        left: 0;\n" + "        bottom: 0;\n" + "        right: 0;\n" + "      }\n" + "      #overlay { position: absolute; z-index: 3; opacity: 0.5; filter: alpha(opacity = 50); top: 0; bottom: 0; left: 0; right: 0; width: 100%; height: 100%; background-color: Black; color: White; display: none;}\n" + "    </style>\n" + "  </head>\n" + "  <body>\n" + "    <div id=\"player\"></div>\n" + "    <script>\n" + "      var tag = document.createElement('script');\n" + "      tag.src = \"https://www.youtube.com/iframe_api\";\n" + "      var firstScriptTag = document.getElementsByTagName('script')[0];\n" + "      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);\n" + "      var player;\n" + "      function onYouTubeIframeAPIReady() {\n" + "        player = new YT.Player('player', {\n" + "          playerVars: {'controls': 0, 'iv_load_policy': 3 },    \n" + "          events: {\n" + "            'onReady': onPlayerReady,\n" + "            'onStateChange': onPlayerStateChange\n" + "          }\n" + "        });\n" + "      }\n" + "      function onPlayerReady(event) {\n" + "        setTimeout(function(){\n" + "          Android.playerReady();\n" + "          player.setVolume(100)\n" + "        }, 200);\n" + "      }\n" + "      var done = false;\n" + "      function onPlayerStateChange(event) {\n" + "        Android.playerStateChange(event.data);\n" + "      }\n" + "      function stopVideo() {\n" + "        player.stopVideo();\n" + "      }\n" + "      function showOverlay() {\n" + "        document.getElementById('overlay').style.display = 'block';\n" + "      }\n" + "      function hideOverlay() {\n" + "        document.getElementById('overlay').style.display = 'none';\n" + "      }\n" + "      function playFullscreen (){\n" + "        iframe = document.getElementById('player');\n" + "        var requestFullScreen = iframe.webkitRequestFullScreen;\n" + "        Android.log(\"Playing fullscreen\");\n" + "        if (requestFullScreen) {\n" + "          requestFullScreen.bind(iframe)();\n" + "        }\n" + "      }\n" + "      function getCurrentTime(){\n" + "        Android.notifyCurrentTime(player.getCurrentTime());\n" + "      }\n" + "      function getDuration(){\n" + "        Android.notifyDuration(player.getDuration());\n" + "      }\n" + "      function getVideoLoadedFraction(){\n" + "        Android.notifyVideoLoadedFraction(player.getVideoLoadedFraction());\n" + "      }\n" + "      window.setInterval(getCurrentTime, 1000);\n" + "      window.setInterval(getDuration, 1000);\n" + //TODO: Test performance of this vs the function calling approach.
-                "window.setInterval(getVideoLoadedFraction, 1000);\n" + "</script>\n" + "<div id=\"overlay\"></div>\n" + "  </body>\n" + "</html>";
-
+        String data = init();
         setTag("YTPlayer");
         clearCache(true);
         clearHistory();
-        //		if (Build.VERSION.SDK_INT >= 19) {
-        //			// chromium, enable hardware acceleration
-        //			setLayerType(View.LAYER_TYPE_HARDWARE, null);
-        //		} else {
-        //			// older android version, disable hardware acceleration
-        //			setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-        //		}
-        //		getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
-        getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
         getSettings().setJavaScriptEnabled(true);
-        getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
         addJavascriptInterface(this, "Android");
-        loadDataWithBaseURL("http://www.youtube.com", data, "text/html", "UTF-8", "http://www.youtube.com");
+        loadDataWithBaseURL("https://www.youtube.com", data, "text/html", "UTF-8", "http://www.youtube.com");
+    }
+
+    private String init() {
+        return "<!DOCTYPE html>" + "<html>" + "<head> <style type=\"text/css\">" + "html {\n" + "        height: 100%;\n" + "      }\n" + "body {\n" + "        min-height: 100%;\n" + "        margin: 0;\n" + "      }\n" + "iframe {\n" + "        position: absolute;\n" + "        border: none;\n" + "        height: 100%;\n" + "        width: 100%;\n" + "        top: 0;\n" + "        left: 0;\n" + "        bottom: 0;\n" + "        right: 0;\n" + "      }\n" + "#overlay { position: absolute; z-index: 3; opacity: 0.5; filter: alpha(opacity = 50); top: 0; bottom: 0; left: 0; right: 0; width: 100%; height: 100%; background-color: Black; color: White; display: none;}\n" + "    </style>\n" + "</head>\n" + "<body>\n" + "<div id=\"player\"></div>\n" + "<script>\n" + "var tag = document.createElement('script');\n" + "tag.src = \"https://www.youtube.com/iframe_api\";\n" + "var firstScriptTag = document.getElementsByTagName('script')[0];\n" + "firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);\n" + "var player;\n" + "function onYouTubeIframeAPIReady() {\n" + "player = new YT.Player('player', {\n" + "playerVars: {'controls': 0, 'iv_load_policy': 3 },\n" + "events: {\n" + "'onReady': onPlayerReady,\n" + "            'onStateChange': onPlayerStateChange}});" + "}" + "function onPlayerReady(event) {" + "setTimeout(function(){" + "Android.playerReady();" + "player.setVolume(100)" + "}, 200);" + "}" + "var done = false;" + "function onPlayerStateChange(event) {" + "Android.playerStateChange(event.data);" + "}" + "function stopVideo() {" + "player.stopVideo();" + "}" + "function showOverlay() {" + "document.getElementById('overlay').style.display = 'block';" + "}" + "function hideOverlay() {" + "document.getElementById('overlay').style.display = 'none';" + "}" + "function playFullscreen (){" + "iframe = document.getElementById('player');" + "var requestFullScreen = iframe.webkitRequestFullScreen;" + "Android.log(\"Playing fullscreen\");" + "if (requestFullScreen) {" + "requestFullScreen.bind(iframe)();" + "}" + "}" + "function getCurrentTime(){" + "Android.notifyCurrentTime(player.getCurrentTime());" + "}" + "function getDuration(){" + "Android.notifyDuration(player.getDuration());" + "}" + "function getVideoLoadedFraction(){" + "Android.notifyVideoLoadedFraction(player.getVideoLoadedFraction());" + "}" + "     " + " window.setInterval(getCurrentTime, 1000);" + "window.setInterval(getDuration, 1000);\n" + //TODO: Test performance of this vs the function calling approach.
+                "window.setInterval(getVideoLoadedFraction, 1000);" + "</script>" + "<div id=\"overlay\">" + "</div>" + "  " + "</body>" + "</html>";
     }
 
     public void pause() {
@@ -146,10 +137,6 @@ public class YoutubePlayerView extends WebView {
 
     public void removePage() {
         loadUrl("about:blank");
-    }
-
-    public int getPlaybackState() {
-        return playbackState;
     }
 
     public void setCurrentTimeListener(NumberReceivedListener currentTimeListener) {

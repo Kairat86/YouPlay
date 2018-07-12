@@ -47,9 +47,9 @@ import static android.view.Gravity.CENTER;
 import static com.palashbansal.musicalyoutube.YoutubePlayerView.GONE;
 import static com.palashbansal.musicalyoutube.YoutubePlayerView.OnClickListener;
 import static com.palashbansal.musicalyoutube.YoutubePlayerView.VISIBLE;
-import static zhet.util.C.ACTION_AD_STATE;
-import static zhet.util.C.HIDE;
-import static zhet.util.C.STATE;
+import static zhet.youplay.util.C.ACTION_AD_STATE;
+import static zhet.youplay.util.C.HIDE;
+import static zhet.youplay.util.C.STATE;
 
 /**
  * Created by Palash on 23-Nov-16.
