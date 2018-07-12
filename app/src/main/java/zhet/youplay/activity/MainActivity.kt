@@ -33,7 +33,6 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         private val TAG: String = MainActivity::class.java.simpleName
-        private const val IS_AD_VISIBLE = "is_ad_visible"
     }
 
     private val stack = Stack<RecyclerView.Adapter<out RecyclerView.ViewHolder>>()

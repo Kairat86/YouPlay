@@ -47,16 +47,6 @@ import static android.view.Gravity.CENTER;
 import static com.palashbansal.musicalyoutube.YoutubePlayerView.GONE;
 import static com.palashbansal.musicalyoutube.YoutubePlayerView.OnClickListener;
 import static com.palashbansal.musicalyoutube.YoutubePlayerView.VISIBLE;
-import static zhet.youplay.util.C.ACTION_AD_STATE;
-import static zhet.youplay.util.C.HIDE;
-import static zhet.youplay.util.C.STATE;
-
-/**
- * Created by Palash on 23-Nov-16.
- * This is the main service that holds the window manager for the Youtube popup player.
- * This will always be running in the background when the video is playing
- * This service can only be stopped by itself, when the queue finishes or user presses the x button.
- */
 
 public class YoutubePlayerService extends Service {
 
@@ -64,7 +54,6 @@ public class YoutubePlayerService extends Service {
     private static final int CONTROL_HIDE_TIMEOUT = 4000;
     public static final String BROADCAST_OPEN_ACTIVITY_FROM_POPUP = "BROADCAST_OPEN_ACTIVITY_FROM_POPUP";
     private static final String TAG = YoutubePlayerService.class.getSimpleName();
-    public static final int SHOW = 1;
     public static boolean isRunning = false, isPlayerReady = false;
     private VideoItem currentVideo;
     private boolean isControlsVisible = false;
@@ -224,9 +213,6 @@ public class YoutubePlayerService extends Service {
         IntentFilter filter = new IntentFilter(ACTION_USER_PRESENT);
         filter.addAction(ACTION_SCREEN_OFF);
         registerReceiver(screenEventReciever, filter);
-        Intent intent = new Intent(ACTION_AD_STATE);
-        intent.putExtra(STATE, HIDE);
-        sendBroadcast(intent);
     }
 
     private NotificationCompat.Builder getBuilder() {
