@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="popular">Популярное</string>
+    <string name="network_not_available">Отсутствует интернет соединение</string>
+    <string name="refresh">Обновить</string>
+    <string name="network_error">Ошибка сети</string>
+    <string name="popular_music">Популярная музыка</string>
+    <string name="starting">Запуск плеера, пожалуйста подожлите</string>
+</resources>
