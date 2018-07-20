@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="popular">Populair</string>
+    <string name="network_not_available">"Geen internet verbinding "</string>
+    <string name="refresh">verversen</string>
+    <string name="network_error">Netwerkfout</string>
+    <string name="popular_music">"Populaire muziek "</string>
+    <string name="starting">"Beginnende speler, een ogenblik geduld "</string>
+</resources>
