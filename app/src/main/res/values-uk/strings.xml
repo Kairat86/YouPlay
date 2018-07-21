@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="popular">Популярний</string>
+    <string name="network_not_available">"Немає підключення до Інтернету "</string>
+    <string name="refresh">Оновити</string>
+    <string name="network_error">"Помилка мережі "</string>
+    <string name="popular_music">"Популярна музика "</string>
+    <string name="starting">"Початок гравця, будь ласка, зачекайте "</string>
+</resources>
