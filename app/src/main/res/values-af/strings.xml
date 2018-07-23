@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="popular">Gewilde</string>
+    <string name="network_not_available">"Geen internet konneksie nie "</string>
+    <string name="refresh">Verfris</string>
+    <string name="network_error">"Netwerk fout "</string>
+    <string name="popular_music">"Gewilde musiek "</string>
+    <string name="starting">"Begin speler, wag asseblief "</string>
+</resources>
