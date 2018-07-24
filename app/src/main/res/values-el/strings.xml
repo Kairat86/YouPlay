@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="popular">Δημοφιλής</string>
+    <string name="network_not_available">"Δεν υπάρχει σύνδεση στο διαδίκτυο "</string>
+    <string name="refresh">Φρεσκάρω</string>
+    <string name="network_error">"Σφάλμα δικτύου "</string>
+    <string name="popular_music">"Δημοφιλής μουσική "</string>
+    <string name="starting">"Ξεκινώντας τον παίκτη, παρακαλώ περιμένετε "</string>
+</resources>
