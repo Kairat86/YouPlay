@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="popular">Popular</string>
+    <string name="network_not_available">"Fără conexiune internet "</string>
+    <string name="refresh">"Reîmprospăta "</string>
+    <string name="network_error">"Eroare de rețea "</string>
+    <string name="popular_music">"Muzica populara "</string>
+    <string name="starting">"Pornirea jucătorului, așteptați "</string>
+</resources>

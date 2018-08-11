@@ -21,3 +21,4 @@
 #-renamesourcefileattribute SourceFile
 -dontwarn  okhttp3.**
 -keep class com.google.api.** { *; }
+-optimizations !class/unboxing/enum
