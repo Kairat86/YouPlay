@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="popular">Népszerű</string>
+    <string name="network_not_available">"Nincs internetkapcsolat "</string>
+    <string name="refresh">Frissítés</string>
+    <string name="network_error">"Hálózati hiba "</string>
+    <string name="popular_music">"Népszerű zene "</string>
+    <string name="starting">"Kezdő játékos, kérlek várj "</string>
+</resources>
