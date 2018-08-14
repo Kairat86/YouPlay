@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="popular">"محبوب "</string>
+    <string name="network_not_available">"بدون اتصال به اینترنت "</string>
+    <string name="refresh">"تازه کردن "</string>
+    <string name="network_error">"خطای شبکه "</string>
+    <string name="popular_music">"موسیقی محبوب "</string>
+    <string name="starting">"شروع بازیکن، لطفا صبر کنید "</string>
+</resources>
