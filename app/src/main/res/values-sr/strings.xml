@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="popular">Популарно</string>
+    <string name="network_not_available">Нема интернет везе</string>
+    <string name="refresh">Освјежи</string>
+    <string name="network_error">Грешка у мрежи</string>
+    <string name="popular_music">Популарна музика</string>
+    <string name="starting">Почетак играча, молимо сачекајте</string>
+</resources>
