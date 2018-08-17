@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="popular">"Populær "</string>
+    <string name="network_not_available">"Ingen internetforbindelse "</string>
+    <string name="refresh">Opdater</string>
+    <string name="network_error">Netværksfejl</string>
+    <string name="popular_music">"Populær musik "</string>
+    <string name="starting">"Start spiller, vent venligst "</string>
+</resources>

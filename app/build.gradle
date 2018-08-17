@@ -22,8 +22,8 @@ android {
         applicationId "zhet.youplay"
         minSdkVersion 21
         targetSdkVersion 27
-        versionCode 27
-        versionName "2.25"
+        versionCode 28
+        versionName "2.26"
         multiDexEnabled true
         buildConfigField "String", "KEY", localProperties["key"]
     }
@@ -49,7 +49,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
-    implementation 'com.google.android.gms:play-services-auth:15.0.1'
+    implementation 'com.google.android.gms:play-services-auth:16.0.0'
     implementation 'pub.devrel:easypermissions:0.3.0'
     implementation('com.google.api-client:google-api-client-android:1.23.0') {
         exclude group: 'org.apache.httpcomponents'
