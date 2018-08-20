@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="popular">Папулярны</string>
+    <string name="network_not_available">"Няма падлучэння да Інтэрнэту "</string>
+    <string name="refresh">Абнаўленне</string>
+    <string name="network_error">"Памылка сеткі "</string>
+    <string name="popular_music">"Папулярная музыка "</string>
+    <string name="starting">"Запуск плэера, калі ласка, пачакайце "</string>
+</resources>
