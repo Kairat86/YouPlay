@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="popular">Oblíbený</string>
+    <string name="network_not_available">"Žádné internetové připojení "</string>
+    <string name="refresh">Obnovit</string>
+    <string name="network_error">"Chyba sítě "</string>
+    <string name="popular_music">"Populární muzika "</string>
+    <string name="starting">"Spuštění hráče, počkejte prosím "</string>
+</resources>

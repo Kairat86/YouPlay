@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="popular">Populer</string>
+    <string name="network_not_available">"Tidak ada koneksi internet "</string>
+    <string name="refresh">Menyegarkan</string>
+    <string name="network_error">"Kesalahan jaringan "</string>
+    <string name="popular_music">"Musik populer "</string>
+    <string name="starting">"Memulai pemutar, harap tunggu "</string>
+</resources>
