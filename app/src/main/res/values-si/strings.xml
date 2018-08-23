@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="popular">ජනප්රිය</string>
+    <string name="network_not_available">"අන්තර්ජාල සම්බන්ධතාවයක් නැත "</string>
+    <string name="refresh">Refresh</string>
+    <string name="network_error">"ජාල දෝෂය "</string>
+    <string name="popular_music">"ජනප්රිය සංගීතය "</string>
+    <string name="starting">"ක්රීඩකයා ආරම්භ කිරීම, කරුණාකර රැඳී සිටින්න "</string>
+</resources>
