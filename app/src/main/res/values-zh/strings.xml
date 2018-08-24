@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="popular">流行</string>
+    <string name="network_not_available">"没有网络连接 "</string>
+    <string name="refresh">"刷新 "</string>
+    <string name="network_error">"网络错误 "</string>
+    <string name="popular_music">"流行音乐 "</string>
+    <string name="starting">"首发球员，请稍候 "</string>
+</resources>
