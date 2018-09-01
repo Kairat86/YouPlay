@@ -406,7 +406,7 @@ public class YoutubePlayerService extends Service {
                         playerView.hideOverlay();
                         closeContainer.setVisibility(GONE);
                         if (shouldClose) stopSelf();
-                        return false;
+                        return true;
                     case MotionEvent.ACTION_MOVE:
                         if (!playerView.isDragging) {
                             return false;

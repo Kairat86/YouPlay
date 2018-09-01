@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="popular">ተወዳጅ</string>
+    <string name="network_not_available">"ምንም የበይነመረብ ግንኙነት የለም "</string>
+    <string name="refresh">አድስ</string>
+    <string name="network_error">"የአውታረ መረብ ስህተት "</string>
+    <string name="popular_music">"ታዋቂ ሙዚቃ "</string>
+    <string name="starting">"አጫዋችን በማስጀመር, እባክዎ ይጠብቁ "</string>
+</resources>
