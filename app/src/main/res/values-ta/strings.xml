@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="popular">"பிரபலமான "</string>
+    <string name="network_not_available">"இணைய இணைப்பு இல்லை "</string>
+    <string name="refresh">புதுப்பிப்பு</string>
+    <string name="network_error">"நெட்வொர்க் பிழை "</string>
+    <string name="popular_music">"பிரபலமான இசை "</string>
+    <string name="starting">"வீரர் தொடங்கி, தயவு செய்து காத்திருங்கள் "</string>
+</resources>
