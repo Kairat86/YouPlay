@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="popular">Popularno</string>
+    <string name="network_not_available">"Brez internetne povezave "</string>
+    <string name="refresh">Osveži</string>
+    <string name="network_error">"Napaka omrežja "</string>
+    <string name="popular_music">"Priljubljena glasba "</string>
+    <string name="starting">"Začetek predvajanja, počakajte "</string>
+</resources>
