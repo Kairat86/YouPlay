@@ -8,7 +8,6 @@ def keystoreProperties = new Properties()
 keystoreProperties.load(rootProject.file("keystore.properties").newDataInputStream())
 
 android {
-
     signingConfigs {
         zig {
             storeFile file(keystoreProperties['storeFile'])
@@ -23,8 +22,8 @@ android {
         applicationId "zhet.youplay"
         minSdkVersion 21
         targetSdkVersion 27
-        versionCode 35
-        versionName "2.33"
+        versionCode 36
+        versionName "2.34"
         multiDexEnabled true
         buildConfigField "String", "KEY", localProperties["key"]
     }

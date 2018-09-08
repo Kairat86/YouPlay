@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="popular">"ຍອດນິຍົມ "</string>
+    <string name="network_not_available">"ບໍ່ມີການເຊື່ອມຕໍ່ອິນເຕີເນັດ "</string>
+    <string name="refresh">"ປັບປຸງໃຫມ່ "</string>
+    <string name="network_error">"ເຄືອຂ່າຍຜິດພາດ "</string>
+    <string name="popular_music">"Popular music "</string>
+    <string name="starting">"ເລີ່ມຕົ້ນຜູ້ນ, ກະລຸນາລໍຖ້າ "</string>
+</resources>
