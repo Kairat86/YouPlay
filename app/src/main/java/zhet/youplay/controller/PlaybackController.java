@@ -14,14 +14,6 @@ import zhet.youplay.adapter.PlaybackQueueAdapter;
 import zhet.youplay.entity.Playlist;
 import zhet.youplay.service.YoutubePlayerService;
 
-/**
- * Created by Palash on 24-Nov-16.
- * The singleton object of this class is responsible for controlling the playback of music.
- * This behaves like a bridge between the user and music playback
- * All user actions have to go through this class's object
- * This class also stores the current state of the playback
- */
-
 public class PlaybackController {
     public static final String CURRENT_POSITION_STRING = "CURRENT_POSITION";
     public static final int REPEAT = 0;

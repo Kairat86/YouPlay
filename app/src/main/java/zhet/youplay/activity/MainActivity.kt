@@ -17,6 +17,7 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.SearchView
+import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.InterstitialAd
 import com.google.android.gms.ads.MobileAds
@@ -62,12 +63,12 @@ class MainActivity : AppCompatActivity() {
         MobileAds.initialize(this, getString(R.string.app_id))
         ad = InterstitialAd(this)
         ad?.adUnitId = getString(R.string.int_id)
+        ad?.adListener = object : AdListener() {
+            override fun onAdLoaded() {
+                ad?.show()
+            }
+        }
         ad?.loadAd(AdRequest.Builder().build())
-    }
-
-    override fun onBackPressed() {
-        super.onBackPressed()
-        ad?.show()
     }
 
     private fun search(query: String, type: String, maxResults: Long, category: String?) {

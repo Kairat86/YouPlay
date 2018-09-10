@@ -14,13 +14,6 @@ import com.squareup.picasso.Picasso;
 
 import zhet.youplay.controller.PlaybackController;
 
-/**
- * Created by Palash on 27-Nov-16.
- * This is the adapter for the recyclerview for the queue playback/playlist
- * It supports item drag and swipe to remove
- * It loads data directly from the PlaybackController and notifies it of any change
- */
-
 public class PlaybackQueueAdapter extends RecyclerView.Adapter<PlaybackQueueAdapter.ViewHolder> {
 
     public PlaybackQueueAdapter() {
