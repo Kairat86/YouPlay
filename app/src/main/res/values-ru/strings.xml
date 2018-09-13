@@ -5,5 +5,5 @@
     <string name="refresh">Обновить</string>
     <string name="network_error">Ошибка сети</string>
     <string name="popular_music">Популярная музыка</string>
-    <string name="starting">Запуск плеера, пожалуйста подожлите</string>
+    <string name="starting">Запуск плеера, пожалуйста подождите</string>
 </resources>

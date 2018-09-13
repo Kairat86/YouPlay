@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="popular">"인기 있는 "</string>
+    <string name="network_not_available">"인터넷에 연결되지 않음 "</string>
+    <string name="refresh">"새롭게 하다 "</string>
+    <string name="network_error">"네트워크 오류 "</string>
+    <string name="popular_music">"유명한 음악 "</string>
+    <string name="starting">"시작 플레이어, 기다려주십시오 "</string>
+</resources>
