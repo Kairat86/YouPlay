@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="popular">"Populárne "</string>
+    <string name="network_not_available">"Žiadne internetové pripojenie "</string>
+    <string name="refresh">Obnoviť</string>
+    <string name="network_error">"Chyba siete "</string>
+    <string name="popular_music">"Populárna hudba "</string>
+    <string name="starting">"Spustenie hráča čakajte "</string>
+</resources>
