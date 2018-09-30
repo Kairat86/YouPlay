@@ -96,8 +96,8 @@ class MainActivity : AppCompatActivity() {
                     val searchResultAdapter = SearchResultAdapter(searchResultList)
                     rv.adapter = searchResultAdapter
                     rv.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-                        override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
-                            val manager = recyclerView?.layoutManager as LinearLayoutManager
+                        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                            val manager = recyclerView.layoutManager as LinearLayoutManager
                             if (manager.findLastVisibleItemPosition() == manager.itemCount - 1) {
                                 val nextPageToken = searchResponse.nextPageToken
                                 Log.i(TAG, "nextPageToken=>$nextPageToken")
@@ -130,10 +130,7 @@ class MainActivity : AppCompatActivity() {
         if (isNetworkConnected()) init()
     }
 
-    private fun isNetworkConnected(): Boolean {
-        val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        return cm.activeNetworkInfo != null;
-    }
+    private fun isNetworkConnected() = (getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager).activeNetworkInfo != null
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu, menu)

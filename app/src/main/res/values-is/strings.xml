@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="popular">Vinsælt</string>
+    <string name="network_not_available">"Engin nettengingu "</string>
+    <string name="refresh">Uppfæra</string>
+    <string name="network_error">"Net villa "</string>
+    <string name="popular_music">"Popular tónlist "</string>
+    <string name="starting">"Byrjar leikmaður, vinsamlegast bíðið "</string>
+</resources>
