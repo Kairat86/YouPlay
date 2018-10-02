@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="popular">פופולרי</string>
+    <string name="network_not_available">"אין חיבור אינטרנט "</string>
+    <string name="refresh">"לְרַעֲנֵן "</string>
+    <string name="network_error">"בעיה ברשת "</string>
+    <string name="popular_music">"מוזיקה פופולרית "</string>
+    <string name="starting">"מתחיל שחקן, אנא המתן "</string>
+</resources>
