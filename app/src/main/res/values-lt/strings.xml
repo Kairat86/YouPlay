@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="popular">Populiarus</string>
+    <string name="network_not_available">"Nėra interneto ryšio "</string>
+    <string name="refresh">"Atnaujinti "</string>
+    <string name="network_error">"Tinklo klaida "</string>
+    <string name="popular_music">"Populiari muzika "</string>
+    <string name="starting">"Pradedantis žaidėjas, palaukite "</string>
+</resources>
