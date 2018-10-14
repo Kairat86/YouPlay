@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="popular">"လူကြိုက်များ "</string>
+    <string name="network_not_available">"အဘယ်သူမျှမအင်တာနက်ချိတ်ဆက် "</string>
+    <string name="refresh">အားဖြည့်</string>
+    <string name="network_error">"Network မှအမှား "</string>
+    <string name="popular_music">"ပေါ်ပြူလာဂီတ "</string>
+    <string name="starting">"ကစားသမားစတင်ကာစောင့်ဆိုင်းကျေးဇူးပြုပြီး "</string>
+</resources>
