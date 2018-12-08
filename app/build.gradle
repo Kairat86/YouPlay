@@ -23,8 +23,8 @@ android {
         applicationId "zhet.youplay"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 44
-        versionName "2.42"
+        versionCode 45
+        versionName "2.43"
         multiDexEnabled true
         buildConfigField "String", "KEY", localProperties["key"]
     }
@@ -58,7 +58,7 @@ dependencies {
     implementation('com.google.apis:google-api-services-youtube:v3-rev198-1.23.0') {
         exclude group: 'org.apache.httpcomponents'
     }
-    implementation 'com.google.android.gms:play-services-ads:17.0.0'
+    implementation 'com.google.android.gms:play-services-ads:17.1.2'
     testImplementation 'junit:junit:4.12'
     implementation 'com.android.support:recyclerview-v7:28.0.0'
     implementation 'com.android.support:cardview-v7:28.0.0'

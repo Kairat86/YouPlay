@@ -150,12 +150,17 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
             android.R.id.home -> {
-                stack.pop()
-                if (!stack.isEmpty()) {
-                    rv.adapter = stack.peek()
+                if (stack.isEmpty()) {
+                    super.onBackPressed()
                 } else {
-                    finish()
+                    stack.pop()
+                    if (!stack.isEmpty()) {
+                        rv.adapter = stack.peek()
+                    } else {
+                        finish()
+                    }
                 }
+
             }
         }
         return true
