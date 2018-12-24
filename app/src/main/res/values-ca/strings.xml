@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="popular">Popular </string>
+    <string name="network_not_available">No hi ha connexió a Internet </string>
+    <string name="refresh">Actualització</string>
+    <string name="network_error">Error de connexió </string>
+    <string name="popular_music">Música popular </string>
+    <string name="starting">Iniciant el jugador, espereu </string>
+</resources>
