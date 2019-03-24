@@ -303,7 +303,6 @@ public class YoutubePlayerService extends Service {
      * It is used to update seek bar UI
      */
     private void updateSeekUI() {
-        Log.d("Service", "Updating SeekUI, " + videoDuration);
         if (isUserChangingTouch || videoDuration == 0) {
             seekBar.setProgress(0);
             seekBar.setSecondaryProgress(0);
