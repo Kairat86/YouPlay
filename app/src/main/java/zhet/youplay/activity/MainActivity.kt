@@ -10,7 +10,6 @@ import android.provider.Settings
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -53,7 +52,6 @@ class MainActivity : AppCompatActivity() {
     private fun init() {
         setTitle(R.string.popular)
         setContentView(R.layout.activity_main)
-        search(getString(R.string.popular_music) + " ${Calendar.getInstance().get(Calendar.YEAR)}", "playlist", 6, null)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !Settings.canDrawOverlays(this)) {
             val intent = Intent("android.settings.action.MANAGE_OVERLAY_PERMISSION", Uri.parse("package:$packageName"))
@@ -65,6 +63,7 @@ class MainActivity : AppCompatActivity() {
         ad?.adUnitId = getString(R.string.int_id)
         ad?.adListener = object : AdListener() {
             override fun onAdLoaded() {
+                search(getString(R.string.popular_music) + " ${Calendar.getInstance().get(Calendar.YEAR)}", "playlist", 6, null)
                 ad?.show()
             }
         }
@@ -100,7 +99,6 @@ class MainActivity : AppCompatActivity() {
                             val manager = recyclerView.layoutManager as LinearLayoutManager
                             if (manager.findLastVisibleItemPosition() == manager.itemCount - 1) {
                                 val nextPageToken = searchResponse.nextPageToken
-                                Log.i(TAG, "nextPageToken=>$nextPageToken")
                                 search.pageToken = nextPageToken
                                 Thread {
                                     isRunning = true
