@@ -1,6 +1,6 @@
 package zhet.youplay.adapter
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +12,7 @@ import com.squareup.picasso.Picasso
 import zhet.youplay.R
 import zhet.youplay.controller.PlaybackController
 
-class PlayListItemAdapter(private val list: List<PlaylistItem>) : RecyclerView.Adapter<PlayListItemAdapter.VH>() {
+class PlayListItemAdapter(private val list: List<PlaylistItem>) : androidx.recyclerview.widget.RecyclerView.Adapter<PlayListItemAdapter.VH>() {
 
     companion object {
         private val TAG: String = PlayListItemAdapter::class.java.simpleName
@@ -48,7 +48,7 @@ class PlayListItemAdapter(private val list: List<PlaylistItem>) : RecyclerView.A
         holder.setCurrentItem(item)
     }
 
-    inner class VH(val view: View) : RecyclerView.ViewHolder(view) {
+    inner class VH(val view: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(view) {
 
         private lateinit var item: PlaylistItem
         val videoImg: ImageView = view.findViewById(R.id.videoImg)

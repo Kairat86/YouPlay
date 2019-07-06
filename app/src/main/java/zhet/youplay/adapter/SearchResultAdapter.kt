@@ -1,6 +1,6 @@
 package zhet.youplay.adapter
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +12,7 @@ import com.squareup.picasso.Picasso
 import zhet.youplay.R
 import zhet.youplay.controller.PlaybackController
 
-class SearchResultAdapter(private val searchResultList: List<SearchResult>) : RecyclerView.Adapter<SearchResultAdapter.SearchResultHolder>() {
+class SearchResultAdapter(private val searchResultList: List<SearchResult>) : androidx.recyclerview.widget.RecyclerView.Adapter<SearchResultAdapter.SearchResultHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchResultHolder {
@@ -45,7 +45,7 @@ class SearchResultAdapter(private val searchResultList: List<SearchResult>) : Re
         holder.setCurrentItem(searchResult)
     }
 
-    class SearchResultHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class SearchResultHolder(view: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(view) {
 
         val videoImg: ImageView = view.findViewById(R.id.videoImg)
         val videoTitle: TextView = view.findViewById(R.id.videoTitle)

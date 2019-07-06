@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="starting">"プレーヤーを始めて、しばらくお待ちください "</string>
+    <string name="refresh">"更新する "</string>
+    <string name="popular_music">"人気の音楽 "</string>
+    <string name="popular">"人気の音楽 "</string>
+    <string name="network_not_available">"インターネット接続なし "</string>
+    <string name="network_error">"ネットワークエラー "</string>
+</resources>

@@ -16,9 +16,9 @@ import android.graphics.PixelFormat;
 import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
-import android.support.v4.app.NotificationCompat;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.core.app.NotificationCompat;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
@@ -88,7 +88,6 @@ public class YoutubePlayerService extends Service {
      */
     public static boolean checkServiceAndStart(Context context) {
         if (!isRunning) {
-            Log.d("Player", "StartingService");
             context.startService(new Intent(context, YoutubePlayerService.class));
             return false;
         }

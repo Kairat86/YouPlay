@@ -1,6 +1,6 @@
 package zhet.youplay.adapter
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -18,9 +18,9 @@ import zhet.youplay.singleton.YouPlay
 import java.util.*
 
 
-class PlayListAdapter(private val playLists: List<SearchResult>, val prgrBar: View, val stack: Stack<RecyclerView.Adapter<out RecyclerView.ViewHolder>>) : RecyclerView.Adapter<PlayListAdapter.VH>() {
+class PlayListAdapter(private val playLists: List<SearchResult>, val prgrBar: View, val stack: Stack<androidx.recyclerview.widget.RecyclerView.Adapter<out androidx.recyclerview.widget.RecyclerView.ViewHolder>>) : androidx.recyclerview.widget.RecyclerView.Adapter<PlayListAdapter.VH>() {
 
-    private lateinit var rv: RecyclerView
+    private lateinit var rv: androidx.recyclerview.widget.RecyclerView
 
     companion object {
         val TAG: String = PlayListAdapter::class.java.simpleName
@@ -51,11 +51,11 @@ class PlayListAdapter(private val playLists: List<SearchResult>, val prgrBar: Vi
         holder.setCurrentResult(result)
     }
 
-    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
+    override fun onAttachedToRecyclerView(recyclerView: androidx.recyclerview.widget.RecyclerView) {
         this.rv = recyclerView
     }
 
-    inner class VH(view: View, prgrBar: View) : RecyclerView.ViewHolder(view) {
+    inner class VH(view: View, prgrBar: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(view) {
         val img: ImageView = view.findViewById(R.id.playlistThumb)
         val name: TextView = view.findViewById(R.id.playlistName)
         private lateinit var result: SearchResult

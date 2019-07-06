@@ -7,15 +7,14 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.SearchView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.InterstitialAd
@@ -62,6 +61,10 @@ class MainActivity : AppCompatActivity() {
         ad = InterstitialAd(this)
         ad?.adUnitId = getString(R.string.int_id)
         ad?.adListener = object : AdListener() {
+            override fun onAdFailedToLoad(p0: Int) {
+                search(getString(R.string.popular_music) + " ${Calendar.getInstance().get(Calendar.YEAR)}", "playlist", 6, null)
+            }
+
             override fun onAdLoaded() {
                 search(getString(R.string.popular_music) + " ${Calendar.getInstance().get(Calendar.YEAR)}", "playlist", 6, null)
                 ad?.show()
@@ -96,7 +99,7 @@ class MainActivity : AppCompatActivity() {
                     rv.adapter = searchResultAdapter
                     rv.addOnScrollListener(object : RecyclerView.OnScrollListener() {
                         override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                            val manager = recyclerView.layoutManager as LinearLayoutManager
+                            val manager = recyclerView.layoutManager as androidx.recyclerview.widget.LinearLayoutManager
                             if (manager.findLastVisibleItemPosition() == manager.itemCount - 1) {
                                 val nextPageToken = searchResponse.nextPageToken
                                 search.pageToken = nextPageToken
