@@ -1,13 +1,7 @@
-package com.palashbansal.musicalyoutube;
+package zhet.player;
 
 import java.io.Serializable;
 
-/**
- * Created by Palash on 22-Oct-16.
- * The Video Model.
- * Contains all the data needed to store a video instance.
- * Its also serializable
- */
 
 public class VideoItem implements Serializable {
     private String title;

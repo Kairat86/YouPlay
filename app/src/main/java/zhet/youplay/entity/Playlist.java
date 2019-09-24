@@ -2,22 +2,16 @@ package zhet.youplay.entity;
 
 import android.content.SharedPreferences;
 
-import com.palashbansal.musicalyoutube.VideoItem;
-
 import org.apache.pig.impl.util.ObjectSerializer;
 
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import zhet.player.VideoItem;
+
 import static zhet.youplay.controller.PlaybackController.CURRENT_POSITION_STRING;
 import static zhet.youplay.controller.PlaybackController.CURRENT_QUEUE_NAME;
-
-/**
- * Created by Palash on 23-Nov-16.
- * The playlist class to hold the current queue or any playlist
- * This is fully extensible and playlist support can be added with breaking much code
- */
 
 public class Playlist implements Serializable {
     private ArrayList<VideoItem> videos;
@@ -27,10 +21,6 @@ public class Playlist implements Serializable {
     public Playlist(ArrayList<VideoItem> videos, String name) {
         this.videos = videos;
         this.name = name;
-    }
-
-    public static void insertIntoPlaylist(VideoItem video, String playlistName) {
-        //todo: implement
     }
 
     public ArrayList<VideoItem> getVideos() {

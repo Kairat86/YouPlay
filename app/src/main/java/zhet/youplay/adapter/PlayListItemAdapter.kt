@@ -1,13 +1,12 @@
 package zhet.youplay.adapter
 
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.google.api.services.youtube.model.PlaylistItem
-import com.palashbansal.musicalyoutube.VideoItem
+import zhet.player.VideoItem
 import com.squareup.picasso.Picasso
 import zhet.youplay.R
 import zhet.youplay.controller.PlaybackController

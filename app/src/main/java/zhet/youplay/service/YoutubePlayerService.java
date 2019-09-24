@@ -16,9 +16,6 @@ import android.graphics.PixelFormat;
 import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.core.app.NotificationCompat;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
@@ -33,9 +30,11 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
 
-import com.palashbansal.musicalyoutube.VideoItem;
-import com.palashbansal.musicalyoutube.YoutubePlayerView;
-
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.core.app.NotificationCompat;
+import zhet.player.VideoItem;
+import zhet.player.YoutubePlayerView;
 import zhet.youplay.R;
 import zhet.youplay.controller.PlaybackController;
 import zhet.youplay.receiver.OpenAppReceiver;
@@ -44,9 +43,9 @@ import static android.content.Intent.ACTION_SCREEN_OFF;
 import static android.content.Intent.ACTION_USER_PRESENT;
 import static android.view.Gravity.BOTTOM;
 import static android.view.Gravity.CENTER;
-import static com.palashbansal.musicalyoutube.YoutubePlayerView.GONE;
-import static com.palashbansal.musicalyoutube.YoutubePlayerView.OnClickListener;
-import static com.palashbansal.musicalyoutube.YoutubePlayerView.VISIBLE;
+import static zhet.player.YoutubePlayerView.GONE;
+import static zhet.player.YoutubePlayerView.OnClickListener;
+import static zhet.player.YoutubePlayerView.VISIBLE;
 
 public class YoutubePlayerService extends Service {
 
@@ -113,14 +112,14 @@ public class YoutubePlayerService extends Service {
             }
         };
         LayoutInflater inflater = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(com.palashbansal.musicalyoutube.R.layout.popup_player_layout, container);
+        View view = inflater.inflate(R.layout.popup_player_layout, container);
 
-        playerView = view.findViewById(com.palashbansal.musicalyoutube.R.id.player_view);
-        seekBarContainer = view.findViewById(com.palashbansal.musicalyoutube.R.id.slider_container);
-        seekBar = view.findViewById(com.palashbansal.musicalyoutube.R.id.seekBar);
-        closeButton = view.findViewById(com.palashbansal.musicalyoutube.R.id.close_button);
-        openAppBtn = view.findViewById(com.palashbansal.musicalyoutube.R.id.to_app);
-        bufferingIndicator = view.findViewById(com.palashbansal.musicalyoutube.R.id.buffer_loading_indicator);
+        playerView = view.findViewById(R.id.player_view);
+        seekBarContainer = view.findViewById(R.id.slider_container);
+        seekBar = view.findViewById(R.id.seekBar);
+        closeButton = view.findViewById(R.id.close_button);
+        openAppBtn = view.findViewById(R.id.to_app);
+        bufferingIndicator = view.findViewById(R.id.buffer_loading_indicator);
 
         playerView.initialize();
 
@@ -219,7 +218,7 @@ public class YoutubePlayerService extends Service {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             channelId = createNotificationChannel();
         }
-        return new NotificationCompat.Builder(YoutubePlayerService.this, channelId).setSmallIcon(com.palashbansal.musicalyoutube.R.drawable.headset).setContentTitle(currentVideo.getTitle()).setContentText(currentVideo.getChannelTitle()).setChannelId(getString(com.palashbansal.musicalyoutube.R.string.app_name));
+        return new NotificationCompat.Builder(YoutubePlayerService.this, channelId).setSmallIcon(R.drawable.headset).setContentTitle(currentVideo.getTitle()).setContentText(currentVideo.getChannelTitle()).setChannelId(getString(R.string.app_name));
     }
 
     @RequiresApi(Build.VERSION_CODES.O)

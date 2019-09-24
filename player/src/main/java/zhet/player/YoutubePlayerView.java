@@ -1,10 +1,9 @@
-package com.palashbansal.musicalyoutube;
+package zhet.player;
 
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.webkit.JavascriptInterface;
-import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 public class YoutubePlayerView extends WebView {

@@ -1,7 +1,5 @@
 package zhet.youplay.adapter;
 
-import androidx.core.content.res.ResourcesCompat;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,9 +7,12 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.palashbansal.musicalyoutube.VideoItem;
 import com.squareup.picasso.Picasso;
 
+import androidx.core.content.res.ResourcesCompat;
+import androidx.recyclerview.widget.RecyclerView;
+import zhet.player.VideoItem;
+import zhet.youplay.R;
 import zhet.youplay.controller.PlaybackController;
 
 public class PlaybackQueueAdapter extends RecyclerView.Adapter<PlaybackQueueAdapter.ViewHolder> {
@@ -21,7 +22,7 @@ public class PlaybackQueueAdapter extends RecyclerView.Adapter<PlaybackQueueAdap
 
     @Override
     public PlaybackQueueAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(com.palashbansal.musicalyoutube.R.layout.video_item, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.video_item, parent, false);
         ViewHolder vh = new ViewHolder(v);
         return vh;
     }
@@ -37,9 +38,9 @@ public class PlaybackQueueAdapter extends RecyclerView.Adapter<PlaybackQueueAdap
         holder.channelName.setText(video.getChannelTitle());
         holder.optionsButton.setVisibility(View.INVISIBLE);
         if (controller.getCurrentPosition() == position) {
-            holder.container.setBackgroundColor(ResourcesCompat.getColor(holder.title.getContext().getResources(), com.palashbansal.musicalyoutube.R.color.colorPrimaryDark, null));
+            holder.container.setBackgroundColor(ResourcesCompat.getColor(holder.title.getContext().getResources(), R.color.colorPrimaryDark, null));
         } else {
-            holder.container.setBackgroundColor(ResourcesCompat.getColor(holder.title.getContext().getResources(), com.palashbansal.musicalyoutube.R.color.colorPrimary, null));
+            holder.container.setBackgroundColor(ResourcesCompat.getColor(holder.title.getContext().getResources(), R.color.colorPrimary, null));
         }
         holder.container.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,11 +71,11 @@ public class PlaybackQueueAdapter extends RecyclerView.Adapter<PlaybackQueueAdap
         //		public ProgressBar progressBar;
         public ViewHolder(View v) {
             super(v);
-            thumbnail = v.findViewById(com.palashbansal.musicalyoutube.R.id.video_thumbnail);
-            title = v.findViewById(com.palashbansal.musicalyoutube.R.id.video_title);
-            channelName = v.findViewById(com.palashbansal.musicalyoutube.R.id.video_channel);
-            optionsButton = v.findViewById(com.palashbansal.musicalyoutube.R.id.video_options);
-            container = v.findViewById(com.palashbansal.musicalyoutube.R.id.main_video_container);
+            thumbnail = v.findViewById(R.id.video_thumbnail);
+            title = v.findViewById(R.id.video_title);
+            channelName = v.findViewById(R.id.video_channel);
+            optionsButton = v.findViewById(R.id.video_options);
+            container = v.findViewById(R.id.main_video_container);
         }
     }
 }

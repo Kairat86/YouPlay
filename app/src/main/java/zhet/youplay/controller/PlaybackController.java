@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Handler;
 import android.widget.Toast;
 
-import com.palashbansal.musicalyoutube.VideoItem;
+import zhet.player.VideoItem;
 
 import java.util.ArrayList;
 
@@ -44,7 +44,7 @@ public class PlaybackController {
 
     public synchronized static PlaybackController getInstance(Context context) {
         if (controller == null && context != null) {
-            controller = new PlaybackController(context.getSharedPreferences(context.getString(com.palashbansal.musicalyoutube.R.string.preference_file_key), Context.MODE_PRIVATE));
+            controller = new PlaybackController(context.getSharedPreferences(context.getString(R.string.preference_file_key), Context.MODE_PRIVATE));
         }
         if (context != null) {
             if (!YoutubePlayerService.checkServiceAndStart(context)) {

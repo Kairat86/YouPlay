@@ -7,6 +7,6 @@ import com.google.api.services.youtube.YouTube
 
 object YouPlay {
 
-    val instance: YouTube = com.google.api.services.youtube.YouTube.Builder(AndroidHttp.newCompatibleTransport(), JacksonFactory.getDefaultInstance(), HttpRequestInitializer { }).setApplicationName("YouPlay").build()
+    val instance: YouTube = YouTube.Builder(AndroidHttp.newCompatibleTransport(), JacksonFactory.getDefaultInstance(), HttpRequestInitializer { }).setApplicationName("YouPlay").build()
 
 }
