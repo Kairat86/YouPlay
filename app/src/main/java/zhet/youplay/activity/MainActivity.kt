@@ -13,6 +13,7 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.SearchView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.ads.AdListener
@@ -47,14 +48,14 @@ class MainActivity : AppCompatActivity() {
         init()
     }
 
-
     private fun init() {
         setTitle(R.string.popular)
         setContentView(R.layout.activity_main)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !Settings.canDrawOverlays(this)) {
-            val intent = Intent("android.settings.action.MANAGE_OVERLAY_PERMISSION", Uri.parse("package:$packageName"))
-            startActivity(intent)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q && !Settings.canDrawOverlays(this)) {
+            AlertDialog.Builder(this).setTitle(R.string.permission_required).setMessage(R.string.msg_perm_overlay).setPositiveButton(android.R.string.ok) { _, _ -> startSettingsActivity() }.show()
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !Settings.canDrawOverlays(this)) {
+            startSettingsActivity()
         }
 
         MobileAds.initialize(this, getString(R.string.app_id))
@@ -71,6 +72,11 @@ class MainActivity : AppCompatActivity() {
             }
         }
         ad?.loadAd(AdRequest.Builder().build())
+    }
+
+    private fun startSettingsActivity() {
+        val intent = Intent("android.settings.action.MANAGE_OVERLAY_PERMISSION", Uri.parse("package:$packageName"))
+        startActivity(intent)
     }
 
     private fun search(query: String, type: String, maxResults: Long, category: String?) {
