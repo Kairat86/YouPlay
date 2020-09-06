@@ -69,7 +69,7 @@ public class YoutubePlayerService extends Service {
     private long lastTouchTime;
     private PlaybackController controller;
     private ImageView closeButton;
-    private ImageView openAppBtn;
+    private ImageView playPause;
     private ProgressBar bufferingIndicator;
     private OpenAppReceiver receiver;
     private BroadcastReceiver screenEventReciever;
@@ -118,7 +118,7 @@ public class YoutubePlayerService extends Service {
         seekBarContainer = view.findViewById(R.id.slider_container);
         seekBar = view.findViewById(R.id.seekBar);
         closeButton = view.findViewById(R.id.close_button);
-        openAppBtn = view.findViewById(R.id.to_app);
+        playPause = view.findViewById(R.id.playPause);
         bufferingIndicator = view.findViewById(R.id.buffer_loading_indicator);
 
         playerView.initialize();
@@ -272,12 +272,12 @@ public class YoutubePlayerService extends Service {
             }
         });
 
-        openAppBtn.setOnClickListener(new OnClickListener() {
+        playPause.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i(TAG, "onClick");
-                Intent intent = new Intent(BROADCAST_OPEN_ACTIVITY_FROM_POPUP);
-                sendBroadcast(intent);
+                playerView.pause();
+                ImageView imageView = (ImageView) v;
+                imageView.setImageResource(android.R.drawable.ic_media_play);
             }
         });
     }

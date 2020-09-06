@@ -118,11 +118,10 @@ public class PlaybackController {
         }
     }
 
-    public boolean saveCurrentAsPlaylist(String name) {
-        if (!playlist.getName().equals(CURRENT_QUEUE_NAME)) return false;
+    public void saveCurrentAsPlaylist(String name) {
+        if (!playlist.getName().equals(CURRENT_QUEUE_NAME)) return;
         playlist.setName(name);
         playlist.saveAsNew(currentPosition, sharedPreferences);
-        return true;
     }
 
     public Playlist getPlaylist() {

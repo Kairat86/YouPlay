@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:id="@+id/main_container"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:background="#0fff"
-              android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#0fff"
+    android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -17,15 +17,14 @@
         <zhet.player.YoutubePlayerView
             android:id="@+id/player_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        </zhet.player.YoutubePlayerView>
+            android:layout_height="match_parent"></zhet.player.YoutubePlayerView>
 
         <ProgressBar
             android:id="@+id/buffer_loading_indicator"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
-            android:visibility="visible"/>
+            android:visibility="visible" />
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -43,12 +42,12 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/to_app"
+                android:id="@+id/playPause"
                 android:layout_width="wrap_content"
                 android:layout_height="28dp"
                 android:clickable="true"
                 android:focusable="true"
-                android:src="@drawable/ic_open_in_new_black_24dp"/>
+                android:src="@android:drawable/ic_media_pause" />
 
             <SeekBar
                 android:id="@+id/seekBar"
@@ -59,8 +58,7 @@
                 android:progressTint="@color/colorAccent"
                 android:secondaryProgress="0"
                 android:secondaryProgressTint="@color/colorAccent"
-                android:thumbTint="@color/colorAccent"
-                />
+                android:thumbTint="@color/colorAccent" />
 
             <ImageView
                 android:id="@+id/close_button"
@@ -69,7 +67,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:src="@drawable/close"
-                android:visibility="gone"/>
+                android:visibility="gone" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
