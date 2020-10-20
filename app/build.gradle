@@ -22,8 +22,8 @@ android {
         applicationId "zhet.youplay"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 56
-        versionName "2.54"
+        versionCode 57
+        versionName "2.55"
         multiDexEnabled true
         buildConfigField "String", "KEY", localProperties["key"]
     }
@@ -54,7 +54,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.2'
     implementation 'com.google.android.gms:play-services-auth:18.1.0'
     implementation 'pub.devrel:easypermissions:0.3.0'
-    implementation('com.google.api-client:google-api-client-android:1.30.10') {
+    implementation('com.google.api-client:google-api-client-android:1.30.11') {
         exclude group: 'org.apache.httpcomponents'
     }
     implementation('com.google.apis:google-api-services-youtube:v3-rev99-1.17.0-rc') {
