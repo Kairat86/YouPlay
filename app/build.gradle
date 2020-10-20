@@ -30,6 +30,7 @@ android {
     buildTypes {
         release {
             minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.zig
             applicationVariants.all { variant ->
@@ -45,6 +46,7 @@ android {
     packagingOptions {
         exclude  'META-INF/DEPENDENCIES'
     }
+    buildToolsVersion '29.0.3'
 
 }
 
