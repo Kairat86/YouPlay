@@ -1,4 +1,4 @@
-package zhet.youplay.entity;
+package play.zhet.you.entity;
 
 import android.content.SharedPreferences;
 
@@ -10,8 +10,8 @@ import java.util.ArrayList;
 
 import zhet.player.VideoItem;
 
-import static zhet.youplay.controller.PlaybackController.CURRENT_POSITION_STRING;
-import static zhet.youplay.controller.PlaybackController.CURRENT_QUEUE_NAME;
+import static play.zhet.you.controller.PlaybackController.CURRENT_POSITION_STRING;
+import static play.zhet.you.controller.PlaybackController.CURRENT_QUEUE_NAME;
 
 public class Playlist implements Serializable {
     private ArrayList<VideoItem> videos;

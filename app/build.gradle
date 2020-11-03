@@ -19,11 +19,11 @@ android {
 
     compileSdkVersion 30
     defaultConfig {
-        applicationId "zhet.youplay"
+        applicationId localProperties["id"]
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 58
-        versionName "2.56"
+        versionCode 59
+        versionName "2.57"
         multiDexEnabled true
         buildConfigField "String", "KEY", localProperties["key"]
     }
@@ -53,7 +53,7 @@ android {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.3'
     implementation 'com.google.android.gms:play-services-auth:18.1.0'
     implementation 'pub.devrel:easypermissions:0.3.0'
     implementation('com.google.api-client:google-api-client-android:1.30.11') {
@@ -62,7 +62,7 @@ dependencies {
     implementation('com.google.apis:google-api-services-youtube:v3-rev99-1.17.0-rc') {
         exclude group: 'org.apache.httpcomponents'
     }
-    implementation 'com.google.android.gms:play-services-ads:19.4.0'
+    implementation 'com.google.android.gms:play-services-ads:19.5.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'com.squareup.picasso:picasso:2.71828'

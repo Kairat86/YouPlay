@@ -1,4 +1,4 @@
-package zhet.youplay.singleton
+package play.zhet.you.singleton
 
 import com.google.api.client.extensions.android.http.AndroidHttp
 import com.google.api.client.http.HttpRequestInitializer

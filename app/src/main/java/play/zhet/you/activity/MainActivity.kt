@@ -1,4 +1,4 @@
-package zhet.youplay.activity
+package play.zhet.you.activity
 
 import android.content.Context
 import android.content.Intent
@@ -19,13 +19,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.InterstitialAd
-import com.google.android.gms.ads.MobileAds
 import kotlinx.android.synthetic.main.activity_main.*
-import zhet.youplay.BuildConfig
-import zhet.youplay.R
-import zhet.youplay.adapter.PlayListAdapter
-import zhet.youplay.adapter.SearchResultAdapter
-import zhet.youplay.singleton.YouPlay
+import play.zhet.you.BuildConfig
+import play.zhet.you.R
+import play.zhet.you.adapter.PlayListAdapter
+import play.zhet.you.adapter.SearchResultAdapter
+import play.zhet.you.singleton.YouPlay
 import java.util.*
 
 
@@ -57,8 +56,6 @@ class MainActivity : AppCompatActivity() {
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !Settings.canDrawOverlays(this)) {
             startSettingsActivity()
         }
-
-        MobileAds.initialize(this, getString(R.string.app_id))
         ad = InterstitialAd(this)
         ad?.adUnitId = getString(R.string.int_id)
         ad?.adListener = object : AdListener() {

@@ -1,4 +1,4 @@
-package zhet.youplay.adapter;
+package play.zhet.you.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,8 +12,8 @@ import com.squareup.picasso.Picasso;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import zhet.player.VideoItem;
-import zhet.youplay.R;
-import zhet.youplay.controller.PlaybackController;
+import play.zhet.you.R;
+import play.zhet.you.controller.PlaybackController;
 
 public class PlaybackQueueAdapter extends RecyclerView.Adapter<PlaybackQueueAdapter.ViewHolder> {
 

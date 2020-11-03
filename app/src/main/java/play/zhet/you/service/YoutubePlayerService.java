@@ -1,4 +1,4 @@
-package zhet.youplay.service;
+package play.zhet.you.service;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -35,9 +35,9 @@ import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 import zhet.player.VideoItem;
 import zhet.player.YoutubePlayerView;
-import zhet.youplay.R;
-import zhet.youplay.controller.PlaybackController;
-import zhet.youplay.receiver.OpenAppReceiver;
+import play.zhet.you.R;
+import play.zhet.you.controller.PlaybackController;
+import play.zhet.you.receiver.OpenAppReceiver;
 
 import static android.content.Intent.ACTION_SCREEN_OFF;
 import static android.content.Intent.ACTION_USER_PRESENT;

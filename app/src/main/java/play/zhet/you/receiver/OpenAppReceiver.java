@@ -1,11 +1,11 @@
-package zhet.youplay.receiver;
+package play.zhet.you.receiver;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-import zhet.youplay.activity.MainActivity;
+import play.zhet.you.activity.MainActivity;
 
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 

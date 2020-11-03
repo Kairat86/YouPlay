@@ -1,4 +1,4 @@
-package zhet.youplay.adapter
+package play.zhet.you.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,8 +8,8 @@ import android.widget.TextView
 import com.google.api.services.youtube.model.PlaylistItem
 import zhet.player.VideoItem
 import com.squareup.picasso.Picasso
-import zhet.youplay.R
-import zhet.youplay.controller.PlaybackController
+import play.zhet.you.R
+import play.zhet.you.controller.PlaybackController
 
 class PlayListItemAdapter(private val list: List<PlaylistItem>) : androidx.recyclerview.widget.RecyclerView.Adapter<PlayListItemAdapter.VH>() {
 

@@ -1,4 +1,4 @@
-package zhet.youplay.controller;
+package play.zhet.you.controller;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -9,10 +9,10 @@ import zhet.player.VideoItem;
 
 import java.util.ArrayList;
 
-import zhet.youplay.R;
-import zhet.youplay.adapter.PlaybackQueueAdapter;
-import zhet.youplay.entity.Playlist;
-import zhet.youplay.service.YoutubePlayerService;
+import play.zhet.you.R;
+import play.zhet.you.adapter.PlaybackQueueAdapter;
+import play.zhet.you.entity.Playlist;
+import play.zhet.you.service.YoutubePlayerService;
 
 public class PlaybackController {
     public static final String CURRENT_POSITION_STRING = "CURRENT_POSITION";

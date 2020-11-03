@@ -1,6 +1,5 @@
-package zhet.youplay.adapter
+package play.zhet.you.adapter
 
-import androidx.recyclerview.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -12,9 +11,9 @@ import android.widget.TextView
 import com.google.api.services.youtube.model.PlaylistItem
 import com.google.api.services.youtube.model.SearchResult
 import com.squareup.picasso.Picasso
-import zhet.youplay.BuildConfig
-import zhet.youplay.R
-import zhet.youplay.singleton.YouPlay
+import play.zhet.you.BuildConfig
+import play.zhet.you.R
+import play.zhet.you.singleton.YouPlay
 import java.util.*
 
 
